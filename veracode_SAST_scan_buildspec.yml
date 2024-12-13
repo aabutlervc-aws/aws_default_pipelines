@@ -15,4 +15,5 @@ phases:
       - echo "Starting Veracode Scan"
       - cd $CODEBUILD_SRC_DIR_S3_Artifacts
       - ls -l
-      - java -jar /opt/veracode/api-wrapper.jar -vid ${VERACODE_API_KEY_ID} -vkey ${VERACODE_API_KEY_SECRET} -action UploadAndScan -createprofile true -appname AWS_${RepoName} -version ${BranchName}-${CommitId} -filepath .
+      - java -jar /opt/veracode/api-wrapper.jar -vid ${VERACODE_API_KEY_ID} -vkey ${VERACODE_API_KEY_SECRET} -action UploadAndScan -createprofile true -appname AWS_${RepoName} -version ${codepipeline.PipelineExecutionId}
+-${BranchName}-${CommitId} -filepath .
