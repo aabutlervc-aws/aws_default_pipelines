@@ -13,8 +13,4 @@ phases:
     commands:
       - echo "Running Veracode SCA Agent Scan"
       - cd $CODEBUILD_SRC_DIR_SourceCode
-      - pwd
-      - ls -l
-      - export SRCCLR_SCM_REV="${CODEBUILD_RESOLVED_SOURCE_VERSION}"
-      - echo $SRCCLR_SCM_REV
-      - curl -sSL https://download.sourceclear.com/ci.sh | sh -s -- scan --recursive --debug
+      - curl -sSL https://download.sourceclear.com/ci.sh | sh -s -- scan --recursive
