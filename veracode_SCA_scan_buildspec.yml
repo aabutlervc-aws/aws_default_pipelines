@@ -1,0 +1,17 @@
+## Uses Veracode Docker image: https://hub.docker.com/r/veracode/scm-packaging
+version: 0.2
+
+env:
+  secrets-manager:
+    SRCCLR_API_TOKEN: veracode:veracode_sca_agent_token
+phases:
+  install:
+    commands:
+      - echo "System Updating"
+      # - apt-get update && apt-get upgrade -y 
+  build:
+    commands:
+      - echo "Running Veracode SCA Agent Scan"
+      - export SRCCLR_SCM_REV="${CODEBUILD_RESOLVED_SOURCE_VERSION}"
+      - echo $SRCCLR_SCM_REV
+      - curl -sSL https://download.sourceclear.com/ci.sh | sh
