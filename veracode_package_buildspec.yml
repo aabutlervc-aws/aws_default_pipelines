@@ -16,7 +16,7 @@ phases:
       - curl -fsS https://tools.veracode.com/veracode-cli/install | sh
       - export PATH="$VERACODE_CLI_PATH:$PATH"
       - veracode version
-      - cd $CODEBUILD_SRC_DIR_Source_Code
+      - cd $CODEBUILD_SRC_DIR_SourceCode
   build:
     commands:
       - echo "Running Veracode Packaging"
@@ -24,7 +24,7 @@ phases:
       - veracode package -s . -a -o $VERACODE_PACKAGE_OUTPUT_PATH
       - ls -l $VERACODE_PACKAGE_OUTPUT_PATH
 artifacts:
-  base-directory: $CODEBUILD_SRC_DIR_Source_Code
+  base-directory: $CODEBUILD_SRC_DIR_SourceCode
   files:
     - $VERACODE_PACKAGE_OUTPUT_PATH/*
   discard-paths: yes
